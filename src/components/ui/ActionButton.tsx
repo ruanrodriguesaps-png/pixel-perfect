@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, type LinkProps } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
@@ -44,7 +44,7 @@ export function ActionLink({
   children,
   to,
   params,
-}: CommonProps & { to: string; params?: Record<string, string> }) {
+}: CommonProps & Pick<LinkProps, "to" | "params">) {
   return (
     <Link
       to={to}

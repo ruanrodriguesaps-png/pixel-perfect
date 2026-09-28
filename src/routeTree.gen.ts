@@ -10,33 +10,90 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContaRouteImport } from './routes/conta'
+import { Route as RegrasRouteImport } from './routes/regras'
+import { Route as RoladorRouteImport } from './routes/rolador'
+import { Route as JogadorIndexRouteImport } from './routes/jogador.index'
+import { Route as MestreIndexRouteImport } from './routes/mestre.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContaRoute = ContaRouteImport.update({
+  id: '/conta',
+  path: '/conta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegrasRoute = RegrasRouteImport.update({
+  id: '/regras',
+  path: '/regras',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoladorRoute = RoladorRouteImport.update({
+  id: '/rolador',
+  path: '/rolador',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JogadorIndexRoute = JogadorIndexRouteImport.update({
+  id: '/jogador/',
+  path: '/jogador/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MestreIndexRoute = MestreIndexRouteImport.update({
+  id: '/mestre/',
+  path: '/mestre/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/conta': typeof ContaRoute
+  '/regras': typeof RegrasRoute
+  '/rolador': typeof RoladorRoute
+  '/jogador/': typeof JogadorIndexRoute
+  '/mestre/': typeof MestreIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/conta': typeof ContaRoute
+  '/regras': typeof RegrasRoute
+  '/rolador': typeof RoladorRoute
+  '/jogador': typeof JogadorIndexRoute
+  '/mestre': typeof MestreIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/conta': typeof ContaRoute
+  '/regras': typeof RegrasRoute
+  '/rolador': typeof RoladorRoute
+  '/jogador/': typeof JogadorIndexRoute
+  '/mestre/': typeof MestreIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/conta' | '/regras' | '/rolador' | '/jogador/' | '/mestre/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/conta' | '/regras' | '/rolador' | '/jogador' | '/mestre'
+  id:
+    | '__root__'
+    | '/'
+    | '/conta'
+    | '/regras'
+    | '/rolador'
+    | '/jogador/'
+    | '/mestre/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContaRoute: typeof ContaRoute
+  RegrasRoute: typeof RegrasRoute
+  RoladorRoute: typeof RoladorRoute
+  JogadorIndexRoute: typeof JogadorIndexRoute
+  MestreIndexRoute: typeof MestreIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +105,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conta': {
+      id: '/conta'
+      path: '/conta'
+      fullPath: '/conta'
+      preLoaderRoute: typeof ContaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/regras': {
+      id: '/regras'
+      path: '/regras'
+      fullPath: '/regras'
+      preLoaderRoute: typeof RegrasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rolador': {
+      id: '/rolador'
+      path: '/rolador'
+      fullPath: '/rolador'
+      preLoaderRoute: typeof RoladorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jogador/': {
+      id: '/jogador/'
+      path: '/jogador'
+      fullPath: '/jogador/'
+      preLoaderRoute: typeof JogadorIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mestre/': {
+      id: '/mestre/'
+      path: '/mestre'
+      fullPath: '/mestre/'
+      preLoaderRoute: typeof MestreIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContaRoute: ContaRoute,
+  RegrasRoute: RegrasRoute,
+  RoladorRoute: RoladorRoute,
+  JogadorIndexRoute: JogadorIndexRoute,
+  MestreIndexRoute: MestreIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

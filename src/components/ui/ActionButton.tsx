@@ -42,15 +42,10 @@ export function ActionLink({
   variante = "ghost",
   className,
   children,
-  to,
-  params,
-}: CommonProps & Pick<LinkProps, "to" | "params">) {
+  ...linkProps
+}: CommonProps & LinkProps) {
   return (
-    <Link
-      to={to}
-      params={params}
-      className={cn(base, variants[variante], className)}
-    >
+    <Link {...linkProps} className={cn(base, variants[variante], className)}>
       {icone ? <span className="shrink-0">{icone}</span> : null}
       <span className="min-w-0 flex-1">{children}</span>
     </Link>

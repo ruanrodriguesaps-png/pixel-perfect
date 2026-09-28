@@ -14,7 +14,14 @@ import { Route as ContaRouteImport } from './routes/conta'
 import { Route as RegrasRouteImport } from './routes/regras'
 import { Route as RoladorRouteImport } from './routes/rolador'
 import { Route as JogadorIndexRouteImport } from './routes/jogador.index'
+import { Route as JogadorCombateRouteImport } from './routes/jogador.combate'
 import { Route as MestreIndexRouteImport } from './routes/mestre.index'
+import { Route as MestreCampanhasRouteImport } from './routes/mestre.campanhas'
+import { Route as MestreCombateRouteImport } from './routes/mestre.combate'
+import { Route as MestreEventosRouteImport } from './routes/mestre.eventos'
+import { Route as MestreInimigosRouteImport } from './routes/mestre.inimigos'
+import { Route as MestreNpcsRouteImport } from './routes/mestre.npcs'
+import { Route as JogadorFichasIdRouteImport } from './routes/jogador.fichas.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -41,9 +48,44 @@ const JogadorIndexRoute = JogadorIndexRouteImport.update({
   path: '/jogador/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JogadorCombateRoute = JogadorCombateRouteImport.update({
+  id: '/jogador/combate',
+  path: '/jogador/combate',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MestreIndexRoute = MestreIndexRouteImport.update({
   id: '/mestre/',
   path: '/mestre/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MestreCampanhasRoute = MestreCampanhasRouteImport.update({
+  id: '/mestre/campanhas',
+  path: '/mestre/campanhas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MestreCombateRoute = MestreCombateRouteImport.update({
+  id: '/mestre/combate',
+  path: '/mestre/combate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MestreEventosRoute = MestreEventosRouteImport.update({
+  id: '/mestre/eventos',
+  path: '/mestre/eventos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MestreInimigosRoute = MestreInimigosRouteImport.update({
+  id: '/mestre/inimigos',
+  path: '/mestre/inimigos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MestreNpcsRoute = MestreNpcsRouteImport.update({
+  id: '/mestre/npcs',
+  path: '/mestre/npcs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JogadorFichasIdRoute = JogadorFichasIdRouteImport.update({
+  id: '/jogador/fichas/$id',
+  path: '/jogador/fichas/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -52,16 +94,30 @@ export interface FileRoutesByFullPath {
   '/conta': typeof ContaRoute
   '/regras': typeof RegrasRoute
   '/rolador': typeof RoladorRoute
+  '/jogador/combate': typeof JogadorCombateRoute
+  '/mestre/campanhas': typeof MestreCampanhasRoute
+  '/mestre/combate': typeof MestreCombateRoute
+  '/mestre/eventos': typeof MestreEventosRoute
+  '/mestre/inimigos': typeof MestreInimigosRoute
+  '/mestre/npcs': typeof MestreNpcsRoute
   '/jogador/': typeof JogadorIndexRoute
   '/mestre/': typeof MestreIndexRoute
+  '/jogador/fichas/$id': typeof JogadorFichasIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/conta': typeof ContaRoute
   '/regras': typeof RegrasRoute
   '/rolador': typeof RoladorRoute
+  '/jogador/combate': typeof JogadorCombateRoute
+  '/mestre/campanhas': typeof MestreCampanhasRoute
+  '/mestre/combate': typeof MestreCombateRoute
+  '/mestre/eventos': typeof MestreEventosRoute
+  '/mestre/inimigos': typeof MestreInimigosRoute
+  '/mestre/npcs': typeof MestreNpcsRoute
   '/jogador': typeof JogadorIndexRoute
   '/mestre': typeof MestreIndexRoute
+  '/jogador/fichas/$id': typeof JogadorFichasIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,22 +125,62 @@ export interface FileRoutesById {
   '/conta': typeof ContaRoute
   '/regras': typeof RegrasRoute
   '/rolador': typeof RoladorRoute
+  '/jogador/combate': typeof JogadorCombateRoute
+  '/mestre/campanhas': typeof MestreCampanhasRoute
+  '/mestre/combate': typeof MestreCombateRoute
+  '/mestre/eventos': typeof MestreEventosRoute
+  '/mestre/inimigos': typeof MestreInimigosRoute
+  '/mestre/npcs': typeof MestreNpcsRoute
   '/jogador/': typeof JogadorIndexRoute
   '/mestre/': typeof MestreIndexRoute
+  '/jogador/fichas/$id': typeof JogadorFichasIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/conta' | '/regras' | '/rolador' | '/jogador/' | '/mestre/'
+  fullPaths:
+    | '/'
+    | '/conta'
+    | '/regras'
+    | '/rolador'
+    | '/jogador/combate'
+    | '/mestre/campanhas'
+    | '/mestre/combate'
+    | '/mestre/eventos'
+    | '/mestre/inimigos'
+    | '/mestre/npcs'
+    | '/jogador/'
+    | '/mestre/'
+    | '/jogador/fichas/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/conta' | '/regras' | '/rolador' | '/jogador' | '/mestre'
+  to:
+    | '/'
+    | '/conta'
+    | '/regras'
+    | '/rolador'
+    | '/jogador/combate'
+    | '/mestre/campanhas'
+    | '/mestre/combate'
+    | '/mestre/eventos'
+    | '/mestre/inimigos'
+    | '/mestre/npcs'
+    | '/jogador'
+    | '/mestre'
+    | '/jogador/fichas/$id'
   id:
     | '__root__'
     | '/'
     | '/conta'
     | '/regras'
     | '/rolador'
+    | '/jogador/combate'
+    | '/mestre/campanhas'
+    | '/mestre/combate'
+    | '/mestre/eventos'
+    | '/mestre/inimigos'
+    | '/mestre/npcs'
     | '/jogador/'
     | '/mestre/'
+    | '/jogador/fichas/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -92,8 +188,15 @@ export interface RootRouteChildren {
   ContaRoute: typeof ContaRoute
   RegrasRoute: typeof RegrasRoute
   RoladorRoute: typeof RoladorRoute
+  JogadorCombateRoute: typeof JogadorCombateRoute
+  MestreCampanhasRoute: typeof MestreCampanhasRoute
+  MestreCombateRoute: typeof MestreCombateRoute
+  MestreEventosRoute: typeof MestreEventosRoute
+  MestreInimigosRoute: typeof MestreInimigosRoute
+  MestreNpcsRoute: typeof MestreNpcsRoute
   JogadorIndexRoute: typeof JogadorIndexRoute
   MestreIndexRoute: typeof MestreIndexRoute
+  JogadorFichasIdRoute: typeof JogadorFichasIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -133,11 +236,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JogadorIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/jogador/combate': {
+      id: '/jogador/combate'
+      path: '/jogador/combate'
+      fullPath: '/jogador/combate'
+      preLoaderRoute: typeof JogadorCombateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mestre/': {
       id: '/mestre/'
       path: '/mestre'
       fullPath: '/mestre/'
       preLoaderRoute: typeof MestreIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mestre/campanhas': {
+      id: '/mestre/campanhas'
+      path: '/mestre/campanhas'
+      fullPath: '/mestre/campanhas'
+      preLoaderRoute: typeof MestreCampanhasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mestre/combate': {
+      id: '/mestre/combate'
+      path: '/mestre/combate'
+      fullPath: '/mestre/combate'
+      preLoaderRoute: typeof MestreCombateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mestre/eventos': {
+      id: '/mestre/eventos'
+      path: '/mestre/eventos'
+      fullPath: '/mestre/eventos'
+      preLoaderRoute: typeof MestreEventosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mestre/inimigos': {
+      id: '/mestre/inimigos'
+      path: '/mestre/inimigos'
+      fullPath: '/mestre/inimigos'
+      preLoaderRoute: typeof MestreInimigosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mestre/npcs': {
+      id: '/mestre/npcs'
+      path: '/mestre/npcs'
+      fullPath: '/mestre/npcs'
+      preLoaderRoute: typeof MestreNpcsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jogador/fichas/$id': {
+      id: '/jogador/fichas/$id'
+      path: '/jogador/fichas/$id'
+      fullPath: '/jogador/fichas/$id'
+      preLoaderRoute: typeof JogadorFichasIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -148,8 +300,15 @@ const rootRouteChildren: RootRouteChildren = {
   ContaRoute: ContaRoute,
   RegrasRoute: RegrasRoute,
   RoladorRoute: RoladorRoute,
+  JogadorCombateRoute: JogadorCombateRoute,
+  MestreCampanhasRoute: MestreCampanhasRoute,
+  MestreCombateRoute: MestreCombateRoute,
+  MestreEventosRoute: MestreEventosRoute,
+  MestreInimigosRoute: MestreInimigosRoute,
+  MestreNpcsRoute: MestreNpcsRoute,
   JogadorIndexRoute: JogadorIndexRoute,
   MestreIndexRoute: MestreIndexRoute,
+  JogadorFichasIdRoute: JogadorFichasIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
